@@ -150,36 +150,28 @@ function tranferirACuenta(cuenta) {
 }
 
 function transferirDinero() {
-    var montoATransferir = prompt("Ingrese el monto que desea transferir:");
-    if (saldoCuenta < montoATransferir) {
-        alert("No puede transferirse esa cantidad de dinero.");
-    } else if (montoATransferir == null || montoATransferir == "") {
-        alert("No ingreso monto para la transferencia.");
-    } else if (isNaN(montoATransferir)) {
-        alert("Ingrese solo el monto.");
-    } else {
-        var cuentaATransferir = prompt(
-            "Ingrese el número de cuenta al que desea transferir el dinero:"
-        );
-        if (cuentaATransferir == null || cuentaATransferir == "") {
-            alert("No ingreso cuenta para la transferencia.");
-        } else {
-            restarDinero(montoATransferir);
-            cuentaATransferir = parseInt(cuentaATransferir);
-            switch (cuentaATransferir) {
-                case cuentaAmiga1:
-                    tranferirACuenta(cuentaAmiga1);
-                    break;
-                case cuentaAmiga2:
-                    tranferirACuenta(cuentaAmiga2);
-                    break;
-                default:
-                    alert("Solo puede transferirse dinero a una cuenta amiga.");
-                    break;
-            }
-        }
-    }
+  const cuentaPropia1 = 123456;
+  const cuentaPropia2 = 456789;
+  let pregunta = prompt('Ingrese la cuenta a la que desea tranferir');
+      if (parseInt(pregunta) === cuentaPropia1 || parseInt(pregunta) === cuentaPropia2){
+          saldoATransferir = prompt('Ingrese saldo a transferir')
+              transferenciaMayorASaldo();
+      }
+      else if(parseInt(pregunta) !== cuentaPropia1 ||parseInt(pregunta) !== cuentaPropia2){
+                  alert('Solo puede transferirse dinero a una cuenta amiga.');
+      }
 }
+
+function transferenciaMayorASaldo(){
+      if(saldoATransferir > saldoCuenta){
+      alert('Su saldo no es suficiente para realizar esta operacion');
+      }else {
+      saldoCuenta = saldoCuenta - saldoATransferir;
+      alert('La transferencia se realizo con exito');
+              actualizarSaldoEnPantalla();
+  }
+}
+
 
 function depositarCheque() {
   var montoDecheque = prompt("Ingrese el monto del cheque:");
