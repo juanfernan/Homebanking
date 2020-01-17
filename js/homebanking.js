@@ -21,7 +21,7 @@ cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
 actualizarLimiteEnPantalla();
 
-//Funciones que tenes que completar
+//Funciones 
 function sumarDinero(cantidad) {
   saldoCuenta += cantidad;
 }
